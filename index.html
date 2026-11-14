@@ -1,3 +1,4 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 
 <title>Stille Momente</title>
 
@@ -1172,94 +1173,117 @@
     z-index: -1;
     pointer-events: none;
     overflow: hidden;
-    animation: irisShift 18s linear infinite;
+  }
+  .shimmer-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: 0;
+    animation: orbFade 1.2s ease forwards;
+  }
+  @keyframes orbFade {
+    to { opacity: 1; }
+  }
+  /* Dark mode orbs — vivid, luminous */
+  .shimmer-orb-1 {
+    width: 70vw; height: 70vw;
+    max-width: 580px; max-height: 580px;
+    background: radial-gradient(circle, rgba(160, 60, 200, 0.55) 0%, rgba(100, 30, 160, 0.25) 50%, transparent 72%);
+    top: -20%;
+    right: -15%;
+    animation: orbFade 1.2s ease forwards, orbFloat1 14s ease-in-out infinite alternate;
+    animation-delay: 0s, 1.2s;
+  }
+  .shimmer-orb-2 {
+    width: 65vw; height: 65vw;
+    max-width: 520px; max-height: 520px;
+    background: radial-gradient(circle, rgba(30, 160, 200, 0.45) 0%, rgba(10, 80, 150, 0.20) 50%, transparent 72%);
+    bottom: -15%;
+    left: -15%;
+    animation: orbFade 1.2s ease forwards, orbFloat2 17s ease-in-out infinite alternate;
+    animation-delay: 0.3s, 1.5s;
+  }
+  .shimmer-orb-3 {
+    width: 50vw; height: 50vw;
+    max-width: 420px; max-height: 420px;
+    background: radial-gradient(circle, rgba(220, 100, 50, 0.35) 0%, rgba(160, 40, 80, 0.18) 50%, transparent 72%);
+    top: 35%;
+    left: 15%;
+    animation: orbFade 1.2s ease forwards, orbFloat3 20s ease-in-out infinite alternate;
+    animation-delay: 0.5s, 1.7s;
+  }
+  .shimmer-orb-4 {
+    width: 45vw; height: 45vw;
+    max-width: 360px; max-height: 360px;
+    background: radial-gradient(circle, rgba(30, 180, 130, 0.35) 0%, rgba(10, 100, 80, 0.15) 50%, transparent 72%);
+    top: 60%;
+    right: 0%;
+    animation: orbFade 1.2s ease forwards, orbFloat4 16s ease-in-out infinite alternate;
+    animation-delay: 0.7s, 1.9s;
+  }
+  .shimmer-orb-5 {
+    width: 40vw; height: 40vw;
+    max-width: 320px; max-height: 320px;
+    background: radial-gradient(circle, rgba(200, 60, 180, 0.40) 0%, rgba(120, 20, 140, 0.18) 50%, transparent 72%);
+    bottom: 15%;
+    right: 20%;
+    animation: orbFade 1.2s ease forwards, orbFloat5 22s ease-in-out infinite alternate;
+    animation-delay: 0.4s, 1.6s;
+  }
+  /* Iridescent shimmer overlay — slow hue cycle */
+  .shimmer-iris {
+    position: absolute;
+    inset: 0;
+    animation: irisShift 12s linear infinite;
   }
   @keyframes irisShift {
     0%   { filter: hue-rotate(0deg); }
     100% { filter: hue-rotate(360deg); }
   }
-  .shimmer-orb {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(100px);
-    /* NO opacity:0 — always visible */
-  }
-  /* Dark mode orbs */
-  .shimmer-orb-1 {
-    width: 75vw; height: 75vw;
-    max-width: 620px; max-height: 620px;
-    background: radial-gradient(circle, rgba(170, 60, 220, 0.65) 0%, rgba(110, 30, 170, 0.30) 55%, transparent 75%);
-    top: -25%; right: -18%;
-    animation: orbFloat1 14s ease-in-out infinite alternate;
-  }
-  .shimmer-orb-2 {
-    width: 70vw; height: 70vw;
-    max-width: 560px; max-height: 560px;
-    background: radial-gradient(circle, rgba(20, 160, 210, 0.55) 0%, rgba(10, 80, 160, 0.25) 55%, transparent 75%);
-    bottom: -20%; left: -18%;
-    animation: orbFloat2 17s ease-in-out infinite alternate;
-  }
-  .shimmer-orb-3 {
-    width: 55vw; height: 55vw;
-    max-width: 440px; max-height: 440px;
-    background: radial-gradient(circle, rgba(230, 90, 50, 0.45) 0%, rgba(170, 40, 90, 0.22) 55%, transparent 75%);
-    top: 30%; left: 10%;
-    animation: orbFloat3 20s ease-in-out infinite alternate;
-  }
-  .shimmer-orb-4 {
-    width: 50vw; height: 50vw;
-    max-width: 380px; max-height: 380px;
-    background: radial-gradient(circle, rgba(20, 190, 140, 0.45) 0%, rgba(10, 110, 90, 0.20) 55%, transparent 75%);
-    bottom: 10%; right: -5%;
-    animation: orbFloat4 16s ease-in-out infinite alternate;
-  }
-  .shimmer-orb-5 {
-    width: 45vw; height: 45vw;
-    max-width: 340px; max-height: 340px;
-    background: radial-gradient(circle, rgba(210, 50, 190, 0.50) 0%, rgba(140, 20, 150, 0.22) 55%, transparent 75%);
-    bottom: 20%; right: 15%;
-    animation: orbFloat5 22s ease-in-out infinite alternate;
-  }
   @keyframes orbFloat1 {
     0%   { transform: translate(0, 0) scale(1); }
-    50%  { transform: translate(-25px, 30px) scale(1.06); }
-    100% { transform: translate(20px, -20px) scale(0.96); }
+    33%  { transform: translate(-30px, 25px) scale(1.05); }
+    66%  { transform: translate(20px, -15px) scale(0.97); }
+    100% { transform: translate(-15px, 30px) scale(1.08); }
   }
   @keyframes orbFloat2 {
     0%   { transform: translate(0, 0) scale(1); }
-    50%  { transform: translate(30px, -25px) scale(1.07); }
-    100% { transform: translate(-20px, 20px) scale(0.95); }
+    33%  { transform: translate(25px, -20px) scale(1.06); }
+    66%  { transform: translate(-20px, 30px) scale(0.95); }
+    100% { transform: translate(30px, -10px) scale(1.1); }
   }
   @keyframes orbFloat3 {
-    0%   { transform: translate(0, 0) scale(1); }
-    50%  { transform: translate(25px, -30px) scale(1.05); }
-    100% { transform: translate(-15px, 25px) scale(0.97); }
+    0%   { transform: translate(0, 0) scale(1) rotate(0deg); }
+    50%  { transform: translate(30px, -25px) scale(1.07) rotate(5deg); }
+    100% { transform: translate(-20px, 20px) scale(0.96) rotate(-3deg); }
   }
   @keyframes orbFloat4 {
     0%   { transform: translate(0, 0) scale(1); }
-    50%  { transform: translate(-20px, -25px) scale(1.04); }
-    100% { transform: translate(25px, 20px) scale(0.98); }
+    40%  { transform: translate(-25px, -30px) scale(1.04); }
+    100% { transform: translate(20px, 25px) scale(0.98); }
   }
   @keyframes orbFloat5 {
     0%   { transform: translate(0, 0) scale(1); }
-    50%  { transform: translate(15px, 25px) scale(1.08); }
-    100% { transform: translate(-25px, -15px) scale(0.94); }
+    30%  { transform: translate(20px, 30px) scale(1.08); }
+    70%  { transform: translate(-30px, -20px) scale(0.94); }
+    100% { transform: translate(15px, -25px) scale(1.05); }
   }
-  /* Light mode — stronger colors since cream absorbs them */
+
+  /* Light mode — saturated orbs, no blend mode, visible on cream */
   :root[data-theme="light"] .shimmer-orb-1 {
-    background: radial-gradient(circle, rgba(150, 60, 210, 0.60) 0%, rgba(110, 30, 170, 0.28) 55%, transparent 75%);
+    background: radial-gradient(circle, rgba(160, 70, 220, 0.52) 0%, rgba(120, 40, 180, 0.22) 50%, transparent 72%);
   }
   :root[data-theme="light"] .shimmer-orb-2 {
-    background: radial-gradient(circle, rgba(30, 130, 210, 0.55) 0%, rgba(20, 70, 170, 0.24) 55%, transparent 75%);
+    background: radial-gradient(circle, rgba(50, 150, 220, 0.46) 0%, rgba(30, 90, 180, 0.18) 50%, transparent 72%);
   }
   :root[data-theme="light"] .shimmer-orb-3 {
-    background: radial-gradient(circle, rgba(220, 80, 40, 0.50) 0%, rgba(180, 40, 80, 0.22) 55%, transparent 75%);
+    background: radial-gradient(circle, rgba(220, 90, 50, 0.42) 0%, rgba(190, 50, 80, 0.16) 50%, transparent 72%);
   }
   :root[data-theme="light"] .shimmer-orb-4 {
-    background: radial-gradient(circle, rgba(20, 160, 110, 0.50) 0%, rgba(10, 100, 70, 0.22) 55%, transparent 75%);
+    background: radial-gradient(circle, rgba(30, 170, 120, 0.42) 0%, rgba(20, 110, 80, 0.16) 50%, transparent 72%);
   }
   :root[data-theme="light"] .shimmer-orb-5 {
-    background: radial-gradient(circle, rgba(200, 40, 175, 0.55) 0%, rgba(140, 20, 140, 0.24) 55%, transparent 75%);
+    background: radial-gradient(circle, rgba(200, 40, 170, 0.46) 0%, rgba(140, 20, 140, 0.18) 50%, transparent 72%);
   }
 </style>
 
@@ -1301,18 +1325,52 @@
 
 <div class="app">
 
+  <!-- ===== SCREEN -1: ONBOARDING ===== -->
+  <div class="screen" id="screen-onboarding" style="justify-content:center;align-items:center;text-align:center;padding-block:80px 60px">
+    <div style="font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--text3);margin-bottom:24px">Stille Momente</div>
+    <h1 style="font-size:clamp(28px,8vw,38px);font-weight:800;line-height:1.1;letter-spacing:-0.02em;color:var(--text);margin-bottom:12px;text-wrap:balance">Schön, dass du<br>hier bist.</h1>
+    <p style="font-size:16px;color:var(--text2);margin-bottom:40px;line-height:1.6">Damit ich dich richtig ansprechen kann — wie heißt du?</p>
+
+    <div style="width:100%;display:flex;flex-direction:column;gap:14px;text-align:left">
+      <div>
+        <label style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--text3);display:block;margin-bottom:8px">Dein Name</label>
+        <input id="onb-name" type="text" placeholder="z. B. Anna" autocomplete="given-name"
+          style="width:100%;padding:16px 18px;border-radius:16px;border:1.5px solid var(--border);background:var(--surface);color:var(--text);font-size:16px;font-family:inherit;outline:none;transition:border-color 0.2s"
+          oninput="checkOnboarding()" onfocus="this.style.borderColor='var(--rose-soft)'" onblur="this.style.borderColor='var(--border)'">
+      </div>
+      <div>
+        <label style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--text3);display:block;margin-bottom:8px">Geschlecht</label>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px">
+          <button class="onb-gender-btn" data-gender="weiblich" onclick="selectGender(this)" style="padding:14px;border-radius:16px;border:1.5px solid var(--border);background:var(--surface);color:var(--text2);font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;font-family:inherit">Weiblich</button>
+          <button class="onb-gender-btn" data-gender="männlich" onclick="selectGender(this)" style="padding:14px;border-radius:16px;border:1.5px solid var(--border);background:var(--surface);color:var(--text2);font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;font-family:inherit">Männlich</button>
+          <button class="onb-gender-btn" data-gender="divers" onclick="selectGender(this)" style="padding:14px;border-radius:16px;border:1.5px solid var(--border);background:var(--surface);color:var(--text2);font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;font-family:inherit">Divers</button>
+        </div>
+      </div>
+      <div>
+        <label style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--text3);display:block;margin-bottom:8px">Alter</label>
+        <input id="onb-age" type="number" placeholder="z. B. 27" min="13" max="99" inputmode="numeric"
+          style="width:100%;padding:16px 18px;border-radius:16px;border:1.5px solid var(--border);background:var(--surface);color:var(--text);font-size:16px;font-family:inherit;outline:none;transition:border-color 0.2s"
+          oninput="checkOnboarding()" onfocus="this.style.borderColor='var(--rose-soft)'" onblur="this.style.borderColor='var(--border)'">
+      </div>
+    </div>
+
+    <div style="margin-top:auto;padding-top:40px;width:100%">
+      <button class="btn-primary" id="onb-submit-btn" onclick="finishOnboarding()" disabled>Los geht's →</button>
+    </div>
+  </div>
+
   <!-- ===== SCREEN 0: GREETING ===== -->
-  <div class="screen active" id="screen-0">
+  <div class="screen" id="screen-0">
 
     <div class="greeting-block">
       <div class="greeting-time" id="greeting-time">Guten Morgen</div>
-      <h1 class="greeting-name">Hallo,<br><em>Yasmina.</em></h1>
-      <p class="greeting-sub">Wie geht es dir heute?</p>
+      <h1 class="greeting-name">Hallo,<br><em id="greeting-name-em">dort.</em></h1>
+      <p class="greeting-sub">Wie geht es dir gerade?</p>
     </div>
 
     <div class="mood-block">
       <div class="section-label">Deine Stimmung</div>
-      <div class="mood-grid" id="mood-grid">
+      <div class="mood-grid" id="mood-grid" style="grid-template-columns:repeat(5,1fr)">
         <button class="mood-btn" data-mood="tired" onclick="selectMood(this)">
           <span class="emoji"><svg viewBox="0 0 48 48" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><use href="#icon-moon"/></svg></span>
           <span class="label">Müde</span>
@@ -1329,6 +1387,10 @@
           <span class="emoji"><svg viewBox="0 0 48 48" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><use href="#icon-leaf"/></svg></span>
           <span class="label">Schwer</span>
         </button>
+        <button class="mood-btn" data-mood="unknown" onclick="selectMood(this)">
+          <span class="emoji"><svg viewBox="0 0 48 48" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><use href="#icon-shell"/></svg></span>
+          <span class="label">Weiß nicht</span>
+        </button>
       </div>
 
       <div id="memory-yesterday" class="memory-strip" style="display:none">
@@ -1339,7 +1401,7 @@
 
     <div class="action-block">
       <button class="btn-primary" id="btn-start" onclick="goToIntention()" disabled>
-        Meinen Tag beginnen →
+        Weiter →
       </button>
       <button class="btn-ghost" onclick="skipToGratitude()">Nur Dankbarkeit</button>
     </div>
@@ -1377,7 +1439,7 @@
         <svg viewBox="0 0 48 48" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5" style="vertical-align:middle;margin-right:5px"><use href="#icon-moon"/></svg>
         Zuspruch
       </div>
-      <p class="affirmation-text" id="affirmation-text">"Du musst heute nicht alles im Griff haben. Es reicht, wenn du einfach da bist, Yasmina."</p>
+      <p class="affirmation-text" id="affirmation-text">"Du musst heute nicht alles im Griff haben. Es reicht, wenn du einfach da bist."</p>
     </div>
 
     <div class="spacer"></div>
@@ -1473,7 +1535,7 @@
   <div class="screen" id="screen-4">
     <div class="close-circle"><svg viewBox="0 0 48 48" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.3"><use href="#icon-shell"/></svg></div>
     <h2 class="close-title">Schön, dass du da warst.</h2>
-    <p class="close-sub">Du hast heute einen Moment für dich genommen, Yasmina. Das ist mehr als genug.</p>
+    <p class="close-sub" id="close-sub-text">Du hast heute einen Moment für dich genommen. Das ist mehr als genug.</p>
 
     <div class="close-summary" id="close-summary"></div>
 
@@ -1532,6 +1594,69 @@
   }
   const journalLog = [];
 
+  // ─── USER PROFILE ─────────────────────────────────────────────────────
+  function getProfile() {
+    try { return JSON.parse(localStorage.getItem('stilmo_profile') || 'null'); } catch { return null; }
+  }
+  function saveProfile(p) {
+    try { localStorage.setItem('stilmo_profile', JSON.stringify(p)); } catch {}
+  }
+  function getUserName() {
+    const p = getProfile();
+    return p?.name || '';
+  }
+  function getUserGender() {
+    const p = getProfile();
+    return p?.gender || 'divers'; // 'weiblich', 'männlich', 'divers'
+  }
+  function getUserAge() {
+    const p = getProfile();
+    return p?.age || null;
+  }
+
+  // Onboarding state
+  let onbGender = null;
+
+  function checkOnboarding() {
+    const name = document.getElementById('onb-name').value.trim();
+    const ageVal = document.getElementById('onb-age').value.trim();
+    const age = parseInt(ageVal, 10);
+    const ageOk = ageVal === '' || (age >= 13 && age <= 99); // Alter ist optional
+    document.getElementById('onb-submit-btn').disabled = !(name.length >= 1 && onbGender && ageOk);
+  }
+  function selectGender(btn) {
+    document.querySelectorAll('.onb-gender-btn').forEach(b => {
+      b.style.borderColor = 'var(--border)';
+      b.style.background = 'var(--surface)';
+      b.style.color = 'var(--text2)';
+    });
+    btn.style.borderColor = 'var(--rose)';
+    btn.style.background = 'var(--rose-pale)';
+    btn.style.color = 'var(--rose)';
+    onbGender = btn.dataset.gender;
+    checkOnboarding();
+  }
+  function finishOnboarding() {
+    const name = document.getElementById('onb-name').value.trim();
+    const ageVal = document.getElementById('onb-age').value.trim();
+    const age = ageVal ? parseInt(ageVal, 10) : null;
+    if (!name || !onbGender) return;
+    saveProfile({ name, gender: onbGender, age });
+    applyUserName();
+    // Mark active screen: go to screen-0
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById('screen-0').classList.add('active');
+  }
+  function applyUserName() {
+    const name = getUserName();
+    const nameEl = document.getElementById('greeting-name-em');
+    if (nameEl && name) nameEl.textContent = name + '.';
+    // close screen
+    const closeEl = document.getElementById('close-sub-text');
+    if (closeEl && name) closeEl.textContent = `Du hast heute einen Moment für dich genommen, ${name}. Das ist mehr als genug.`;
+    // affirmation text that uses name (screen-1 content gets set dynamically anyway)
+  }
+
   // ─── CONTENT POOLS ──────────────────────────────────────────────────
   const intentions = {
     tired: [
@@ -1554,53 +1679,68 @@
       "Heute darf es schwer sein. Ich trage mich durch diesen Tag — Schritt für Schritt.",
       "Ich bin sanft mit mir. Auch an schweren Tagen bin ich gut genug.",
       "Ich muss heute nicht funktionieren. Ich darf einfach sein."
+    ],
+    unknown: [
+      "Ich brauche heute keine Antwort. Ich bin einfach offen.",
+      "Es ist okay, nicht zu wissen. Manchmal fängt genau dort etwas an.",
+      "Ich lasse den Tag kommen, ohne ihn schon verstehen zu müssen."
     ]
   };
 
   const affirmations = {
     tired: [
-      '"Ruhe ist keine Schwäche, Yasmina. Sie ist das, was dich trägt."',
+      '"Ruhe ist keine Schwäche. Sie ist das, was dich trägt."',
       '"Du hast nicht weniger Wert, weil du heute weniger schaffst."',
       '"Dein Körper weiß, was er braucht. Hör auf ihn."'
     ],
     okay: [
       '"Heute muss nicht perfekt sein. Es darf einfach sein."',
-      '"Du bist gerade genau dort, wo du sein sollst, Yasmina."',
+      '"Du bist gerade genau dort, wo du sein sollst."',
       '"Mitten im Alltag steckt mehr Schönheit als wir oft sehen."'
     ],
     good: [
-      '"Diese Energie in dir ist echt. Sie gehört dir, Yasmina."',
+      '"Diese Energie in dir ist echt. Sie gehört dir."',
       '"Du strahlst heute — lass andere das spüren."',
       '"Was du anfasst, berührt etwas. Vertrau dem."',
       '"Du hast heute Freiheit gespürt. Das war kein Zufall — das warst du."'
     ],
     heavy: [
       '"Du musst heute nicht lächeln, wenn du das nicht fühlst. Ich bin trotzdem hier."',
-      '"Schwere Tage gehen vorbei, Yasmina. Du bleibst."',
+      '"Schwere Tage gehen vorbei. Du bleibst."',
       '"Sei sanft mit dir. Du machst das gut, auch wenn es sich nicht so anfühlt."'
+    ],
+    unknown: [
+      '"Manchmal reicht es, einfach da zu sein. Ohne zu wissen wie."',
+      '"Du musst heute nichts benennen. Fühlen ist genug."',
+      '"Das Unklare hat seinen eigenen Raum. Du darfst darin stehen."'
     ]
   };
 
   const aiResponses = {
     tired: [
-      "Danke, dass du das teilst. Was wäre heute das Eine, das sich wirklich gut anfühlen würde — egal wie klein?",
-      "Müdigkeit hat oft etwas zu sagen. Weißt du, worum es geht — oder ist es einfach körperlich?",
-      "Das klingt, als bräuchtest du heute extra Sanftheit. Was braucht dich heute am meisten?"
+      "Was macht dich gerade so müde — der Körper, der Kopf, oder beides?",
+      "Müdigkeit hat oft etwas zu sagen. Was ist da gerade los?",
+      "Was bräuchtest du heute, damit es sich ein bisschen leichter anfühlt?"
     ],
     okay: [
-      "So lala — das ist auch okay, weißt du. Was macht diesen Tag gerade so... mittelmäßig?",
-      "Ich höre dich. Gibt es etwas, das dir heute Energie geben würde?",
-      "Was müsste heute passieren, damit du abends sagst: Das war gut?"
+      "So lala — was genau macht es so mittelmäßig gerade?",
+      "Was fehlt dir heute, damit es sich besser anfühlt?",
+      "Wo steckt du gerade fest — innerlich?"
     ],
     good: [
-      "Ich freue mich, das zu lesen! Was hat zu diesem guten Gefühl beigetragen?",
-      "Diese Energie verdient es, genutzt zu werden. Worauf willst du sie heute richten?",
-      "Schön! Was nimmst du dir heute vor, das dir wirklich wichtig ist?"
+      "Was hat heute dieses gute Gefühl ausgelöst?",
+      "Worauf richtest du diese Energie heute?",
+      "Was ist gerade das Schönste an diesem Tag?"
     ],
     heavy: [
-      "Ich bin froh, dass du hier bist, auch an einem schweren Tag. Was liegt dir gerade auf der Seele?",
-      "Das klingt wirklich nicht leicht gerade. Willst du mir erzählen, was dich so beschäftigt?",
-      "An solchen Tagen braucht man manchmal keinen Rat — nur jemanden der zuhört. Ich bin da."
+      "Was liegt dir gerade am meisten auf der Seele?",
+      "Was ist das Schwerste daran gerade?",
+      "Wo sitzt dieses Schwere — wenn du in dich hineinfühlst?"
+    ],
+    unknown: [
+      "Was ist gerade da — auch wenn du es nicht benennen kannst?",
+      "Wo bist du gerade mit deinen Gedanken?",
+      "Was geht dir durch den Kopf, wenn du ehrlich bist?"
     ]
   };
 
@@ -1614,7 +1754,7 @@
   const usedFollowUps = new Set();
 
   const closingMessages = [
-    "Du hast heute für dich geschaut, Yasmina. Das ist wertvoller als du denkst. Geh jetzt raus und sei freundlich zu dir.",
+    `Du hast heute für dich geschaut${getUserName() ? ', ' + getUserName() : ''}. Das ist wertvoller als du denkst. Geh jetzt raus und sei freundlich zu dir.`,
     "Danke für deine Offenheit heute. Ich hoffe, du nimmst dir den ganzen Tag ein bisschen davon mit.",
     "Du hast heute einen Raum für dich geöffnet. Trag das mit dir. Auch die schwierigen Gefühle gehören zu dir."
   ];
@@ -1757,7 +1897,7 @@
     if (!morningEntry) { container.style.display = 'none'; return; }
 
     let html = '<div class="evening-note">';
-    html += '<strong>Heute Morgen hast du geschrieben:</strong><br>';
+    html += '<strong>Heute Morgen:</strong><br>';
     if (morningEntry.journalSnippet) html += `"${morningEntry.journalSnippet}"<br>`;
     if (morningEntry.chatSummary) html += `<span style="color:var(--text3);font-size:13px;margin-top:6px;display:block">${morningEntry.chatSummary}</span>`;
     html += '</div>';
@@ -1838,84 +1978,100 @@
   }
 
   async function callGemini(userText, apiKey) {
-    // Schreibstil der Person analysieren
+    const userName = getUserName() || 'die Person';
+    const userGender = getUserGender(); // 'weiblich', 'männlich', 'divers'
+    const pronoun = userGender === 'männlich' ? 'er' : userGender === 'weiblich' ? 'sie' : 'sie/er';
+    const possessive = userGender === 'männlich' ? 'sein' : 'ihr';
+    const userAge = getUserAge(); // number or null
+    const ageContext = userAge ? ` (${userAge} Jahre)` : '';
+
+    // Schreibstil analysieren
     const userBubbles = Array.from(document.querySelectorAll('.user-bubble')).map(el => el.textContent.trim());
-    const usesLowercase = userBubbles.some(t => t.length > 3 && t[0] === t[0].toLowerCase());
+    const usesLowercase = userBubbles.some(t => t.length > 3 && t[0] === t[0].toLowerCase() && /[a-züäö]/.test(t[0]));
     const avgLength = userBubbles.length ? userBubbles.reduce((s, t) => s + t.length, 0) / userBubbles.length : 50;
     const usesEmojis = userBubbles.some(t => /\p{Emoji}/u.test(t));
-    const styleHint = `Schreibstil von Yasmina: ${usesLowercase ? 'Kleinschreibung' : 'normale Großschreibung'}${avgLength < 30 ? ', sehr knapp (1-2 Sätze)' : avgLength < 60 ? ', mittellang' : ', ausführlich'}${usesEmojis ? ', mit Emojis' : ''}. Passe dich exakt an — gleiche Länge, gleicher Ton.`;
+    const lastUserText = userBubbles[userBubbles.length - 1] || '';
+    const lastResponseWasShort = lastUserText.length <= 15; // z.B. "1 Millionen €"
+    const isEarlyTurn = journalTurns <= 2;
 
     // Kontext: Wie viele Turns gab es schon?
     const isNearEnd = journalTurns >= MAX_TURNS - 2;
     const closingInstruction = isNearEnd
-      ? `\n\nDU KANNST DAS GESPRÄCH JETZT ABSCHLIESSEN: Wenn du spürst, dass ein natürlicher Abschluss da ist — ein Kern freigelegt wurde, eine Erkenntnis da ist, oder das Gespräch sich rundet — dann beende es aktiv. Fasse kurz zusammen, was du gehört hast, spiegele die zentrale Erkenntnis wider, und schließe mit einem Bogen zurück zum Anfang. Dann schreibe am Ende deiner Antwort das Token [CLOSING] (unsichtbar, nur einmal, direkt ans Ende). Wenn noch kein Abschluss passt, stelle eine weitere Frage wie bisher.`
+      ? `\n\nAbschluss möglich: Wenn sich das Gespräch natürlich rundet oder ein Kern da ist — schließe aktiv ab. Kurz zusammenfassen was du gehört hast, zentrale Erkenntnis spiegeln. Dann am Ende: [CLOSING]. Wenn noch nicht, stelle eine weitere Frage.`
       : '';
 
-    // Wenn "weiß nicht" oder ähnlich: Gib eine Beobachtung, keine Frage
+    // Wenn "weiß nicht" oder ähnlich
     const userLower = userText.toLowerCase();
-    const isUncertain = /wei[ß|ss] nicht|keine ahnung|sag du|weiß ich nicht|keine idee|ich weiß es nicht|weiß nicht mal|hab keine|ich hab keine/.test(userLower);
+    const isUncertain = /wei[ßss] nicht|keine ahnung|sag du|weiß ich nicht|keine idee|ich weiß es nicht|weiß nicht mal|hab keine|ich hab keine|k\.a\.|ka\./.test(userLower);
     const uncertaintyInstruction = isUncertain
-      ? `\n\nYasmina sagt sie weiß es nicht. JETZT NICHT FRAGEN — stattdessen: Teile deine eigene Beobachtung mit. Was hast du in diesem Gespräch über sie wahrgenommen? Was liegt auf der Hand, auch wenn sie es selbst nicht sieht? Formuliere es als ehrliche, direkte Aussage: "Ich beobachte, dass..." oder "Was ich höre, ist..." oder "Es klingt für mich, als ob...". Sei mutig und konkret, nicht vage.`
+      ? `\n\n${userName} sagt ${pronoun} weiß es nicht. KEINE FRAGE — stattdessen: Teile eine konkrete Beobachtung mit. Was hast du in diesem Gespräch wahrgenommen? Was liegt auf der Hand? Direkte Aussage: "Ich höre, dass..." oder "Was mir auffällt ist..." — mutig und konkret, nicht vage.`
       : '';
 
-    const baseRole = `Du bist ein einfühlsamer, klarer und tiefgehender psychologischer Begleiter von Yasmina.
-Deine Aufgabe: Sie in einem sicheren, ehrlichen Prozess unterstützen — Gedanken ordnen, Klarheit finden, echte Erkenntnisse erlangen.
+    const pacingRule = isEarlyTurn
+      ? `\n- Früh im Gespräch (Turn 1-2): Bleib beim Konkreten was ${userName} gerade gesagt hat. Kein Philosophieren, kein großes "Was bedeutet das für dich?". Erst verstehen, dann tiefer.`
+      : '';
+    const shortAnswerRule = lastResponseWasShort
+      ? `\n- ${userName} hat sehr kurz geantwortet. NICHT sofort philosophisch werden. Entweder: kurz reagieren + konkret nachfragen ("Ha — warum genau X?"), oder: eine direkte, neugierige Frage zu diesem konkreten Ding.`
+      : '';
 
-GRUNDREGELN:
-- Spiegel zuerst konkret wider, was sie gesagt hat — zeig, dass du wirklich zugehört hast
-- Dann: entweder eine präzise Frage ODER eine mutige Beobachtung (nicht immer nur Frage!)
-- Jeder Turn baut auf dem vorherigen auf — kein Reset
-- Kein Smalltalk, keine Floskeln, keine leeren Aufmunterungen
-- 2-4 Sätze. Geerdet, direkt.
-- ${styleHint}
-- Manchmal ist die stärkste Antwort eine ehrliche Aussage, keine Frage. Wenn du etwas klar siehst, sag es.${closingInstruction}${uncertaintyInstruction}`;
+    const baseRole = `Du bist ein ruhiger, ehrlicher Gesprächspartner von ${userName}${ageContext}.
+Dein Stil: wie ein guter Freund der wirklich zuhört — nicht ein Therapeut, nicht eine KI.
 
-    // Abend-Kontext: Was hat sie morgens geschrieben?
+WICHTIG — Sprachregeln:
+- Benutze NICHT die gleichen Worte oder Bilder die ${userName} gerade benutzt hat. Das klingt wie ein Echo.
+- Statt zu spiegeln: Reagiere mit deiner eigenen Perspektive, einem neuen Winkel, einer echten Frage.
+- Kurz: 1-3 Sätze. Nicht länger.
+- Kein "Das klingt..." / "Es scheint..." / "Du bist..." am Anfang jedes Satzes.
+- Keine Floskeln: "Danke dass du das teilst", "Ich verstehe", "Das ist völlig normal"
+- Manchmal reicht eine einzige, echte Frage. Manchmal eine direkte Aussage. Niemals beides auf einmal.
+- Schreib ${usesLowercase ? 'mit Kleinschreibung wie ' + userName : 'normal'}.
+- Länge: ${avgLength < 30 ? 'sehr kurz, 1-2 Sätze' : avgLength < 70 ? '2-3 Sätze' : '3-4 Sätze max'}.
+${usesEmojis ? '- Emojis sind ok, sparsam.' : '- Keine Emojis.'}${pacingRule}${shortAnswerRule}
+${closingInstruction}${uncertaintyInstruction}`;
+
+    // Abend-Kontext: Was hat die Person morgens geschrieben?
     let morningContext = '';
     if (journalMode === 'evening') {
       const mem = loadMemory();
       const todayData = mem[getTodayKey()];
       const morningData = todayData?.morning;
       if (morningData?.journalSnippet || morningData?.chatSummary) {
-        morningContext = `\n\nHEUTE MORGEN hat Yasmina im Morgenjournal geschrieben: "${morningData.journalSnippet || ''}"`;
-        if (morningData.chatSummary) morningContext += ` Zusammenfassung des Morgengesprächs: ${morningData.chatSummary}`;
-        morningContext += `\nBeziehe dich wenn sinnvoll auf das Morgenjournal — vergleiche, wie sich der Tag entwickelt hat, oder frage danach.`;
+        morningContext = `\n\nHeute Morgen hat ${userName} geschrieben: "${morningData.journalSnippet || ''}"`;
+        if (morningData.chatSummary) morningContext += ` (${morningData.chatSummary})`;
+        morningContext += `\nWenn sinnvoll: Bezug nehmen auf das Morgen-Thema.`;
       }
     }
 
     const moodPrompts = {
       good: `${baseRole}
 
-Yasmina fühlt sich heute GUT.${morningContext}
-- Leichter Ton, aber ohne Oberflächlichkeit
-- Was trägt sie heute wirklich? Was steckt dahinter?
-- Hilf ihr, die Energie bewusst einzusetzen
-- Wenn es tiefer geht: Was liegt unter diesem "gut"?`,
+${userName} fühlt sich heute GUT.${morningContext}
+Ton: leicht, neugierig. Was steckt wirklich dahinter?
+Frage, was ${pronoun} heute mit dieser Energie anfangen will.`,
 
       tired: `${baseRole}
 
-Yasmina fühlt sich heute MÜDE.${morningContext}
-- Ruhig, sanft, kein Druck
-- Was ist noch da trotz der Müdigkeit?
-- Kleine, konkrete Dinge: Was hat heute gut getan?
-- Ehrlich aber zart: Was braucht sie wirklich gerade?`,
+${userName} fühlt sich heute MÜDE.${morningContext}
+Ton: ruhig, sanft. Kein Druck.
+Frag, was hinter der Müdigkeit steckt. Körper? Kopf? Beides?`,
 
       okay: `${baseRole}
 
-Yasmina fühlt sich heute SO LALA.${morningContext}
-- Focusing-Methode: "Wo spürst du das im Körper?"
-- Langsam — eine Frage nach der anderen
-- Das Unklare greifbar machen: Was ist der Kern?
-- Raum geben, ohne sofort zu lösen`,
+${userName} fühlt sich heute SO LALA.${morningContext}
+Ton: neugierig, offen. Was macht es gerade so mittelmäßig?
+Eine Frage nach der anderen. Nichts lösen, erst verstehen.`,
 
       heavy: `${baseRole}
 
-Yasmina fühlt sich heute SCHWER.${morningContext}
-- Langsam, ruhig, voll präsent
-- Körper einbeziehen: "Wo sitzt das Schwere?"
-- Keine Lösungen, keine Aufmunterung — erst ankommen
-- Fragen, die öffnen: Was ist das Schwerste daran?
-- So lange beim Gefühl bleiben, bis sie selbst weiter kann`
+${userName} fühlt sich heute SCHWER.${morningContext}
+Ton: langsam, ganz präsent. Keine Lösungen, keine Aufmunterung.
+Was ist das Schwerste daran? Bleib dabei.`,
+
+      unknown: `${baseRole}
+
+${userName} weiß noch nicht wie ${pronoun} sich fühlt.${morningContext}
+Ton: offen, neugierig, kein Druck zu benennen.
+Hilf dabei herauszufinden was gerade da ist — ohne Schublade.`
     };
 
     const systemPrompt = moodPrompts[currentMood] || moodPrompts.okay;
@@ -2071,7 +2227,7 @@ Yasmina fühlt sich heute SCHWER.${morningContext}
 
     let chatText = '';
     bubbles.forEach(el => {
-      if (el.classList.contains('user-bubble')) chatText += 'Yasmina: ' + el.textContent.trim() + '\n';
+      if (el.classList.contains('user-bubble')) chatText += (getUserName() || 'Ich') + ': ' + el.textContent.trim() + '\n';
       else if (!el.querySelector('.api-key-form')) chatText += 'Begleiter: ' + el.textContent.trim() + '\n';
     });
 
@@ -2079,7 +2235,7 @@ Yasmina fühlt sich heute SCHWER.${morningContext}
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        system_instruction: { parts: [{ text: 'Fasse das folgende Gespräch in 1-2 prägnanten deutschen Sätzen zusammen. Schreib in der dritten Person über Yasmina. Keine Floskeln, keine Bewertung — nur was wirklich besprochen wurde.' }] },
+        system_instruction: { parts: [{ text: `Fasse das folgende Gespräch in 1-2 deutschen Sätzen zusammen. Schreib in der dritten Person über ${getUserName() || 'die Person'}. Keine Floskeln — nur was besprochen wurde.` }] },
         contents: [{ role: 'user', parts: [{ text: chatText }] }]
       })
     });
@@ -2172,6 +2328,7 @@ Yasmina fühlt sich heute SCHWER.${morningContext}
     document.getElementById('g2').value = '';
     document.getElementById('g3').value = '';
 
+    applyUserName();
     updateGreetingTime();
     showYesterdayMemory();
     goTo(0);
@@ -2361,6 +2518,19 @@ Yasmina fühlt sich heute SCHWER.${morningContext}
       else applyTheme('dark'); // dark is default
     } catch { applyTheme('dark'); }
   })();
-  updateGreetingTime();
-  showYesterdayMemory();
+
+  (function initApp() {
+    const profile = getProfile();
+    if (!profile || !profile.name) {
+      // Show onboarding
+      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+      document.getElementById('screen-onboarding').classList.add('active');
+    } else {
+      applyUserName();
+      updateGreetingTime();
+      showYesterdayMemory();
+    }
+  })();
 </script>
+
+</body></html>
