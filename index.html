@@ -1315,6 +1315,10 @@
     <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
     Startseite
   </button>
+  <button class="sidebar-item" onclick="closeSidebar(); openSettings()">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+    Einstellungen
+  </button>
   <div style="margin-top:auto;padding:16px 24px;border-top:1px solid var(--border)">
     <button class="sidebar-item" style="padding:12px 0;width:100%;border-radius:12px;background:var(--bg2);border:1.5px solid var(--border);justify-content:center;gap:10px" onclick="toggleTheme()" id="theme-toggle-btn">
       <svg id="theme-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
@@ -1493,6 +1497,50 @@
     <button class="btn-ghost" id="journal-next-btn" onclick="goTo(3)" style="display:none"></button>
   </div>
 
+  <!-- ===== SCREEN 2.5: AFFIRMATIONS ===== -->
+  <div class="screen" id="screen-affirmations">
+    <div class="nav-dots">
+      <div class="nav-dot"></div>
+      <div class="nav-dot"></div>
+      <div class="nav-dot active"></div>
+      <div class="nav-dot"></div>
+    </div>
+
+    <div style="margin-bottom:8px">
+      <div style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--text3);margin-bottom:16px">Affirmationen</div>
+      <h2 style="font-size:clamp(22px,6vw,28px);font-weight:800;line-height:1.2;letter-spacing:-0.02em;color:var(--text);margin-bottom:8px;text-wrap:balance">Worte, die zu dir passen.</h2>
+      <p style="font-size:15px;color:var(--text2);line-height:1.6">Basierend auf dem, was du heute geteilt hast.</p>
+    </div>
+
+    <!-- Generierte Affirmationen -->
+    <div id="affirmation-cards" style="display:flex;flex-direction:column;gap:12px;margin:24px 0">
+      <!-- Wird per JS befüllt -->
+      <div class="affirmation-loading" style="text-align:center;padding:32px;color:var(--text3);font-size:14px">
+        <div style="width:28px;height:28px;border:2px solid var(--rose-pale);border-top-color:var(--rose);border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 12px"></div>
+        Ich schreibe etwas für dich…
+      </div>
+    </div>
+
+    <!-- Eigene Affirmation -->
+    <div id="own-affirmation-block" style="margin-top:4px;display:none">
+      <div style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--text3);margin-bottom:12px">Jetzt du</div>
+      <div style="display:flex;align-items:center;gap:0;background:var(--surface);border:1.5px solid var(--border);border-radius:16px;overflow:hidden;transition:border-color 0.2s" id="own-affirmation-wrap">
+        <span style="padding:16px 4px 16px 18px;font-size:16px;color:var(--text2);font-style:italic;white-space:nowrap">I am</span>
+        <input id="own-affirmation-input" type="text" placeholder="…" autocomplete="off"
+          style="flex:1;padding:16px 18px 16px 6px;border:none;background:transparent;color:var(--text);font-size:16px;font-family:inherit;outline:none"
+          oninput="checkOwnAffirmation()"
+          onfocus="document.getElementById('own-affirmation-wrap').style.borderColor='var(--rose-soft)'"
+          onblur="document.getElementById('own-affirmation-wrap').style.borderColor='var(--border)'"
+          onkeydown="if(event.key==='Enter')addOwnAffirmation()">
+        <button id="own-affirmation-add" onclick="addOwnAffirmation()" disabled
+          style="padding:12px 16px;background:var(--rose);color:#fff;border:none;font-size:20px;cursor:pointer;opacity:0.4;transition:opacity 0.2s;font-family:inherit">+</button>
+      </div>
+    </div>
+
+    <div class="spacer"></div>
+    <button class="btn-primary" onclick="goTo(3)" id="affirmations-next-btn">Weiter zur Dankbarkeit →</button>
+  </div>
+
   <!-- ===== SCREEN 3: GRATITUDE ===== -->
   <div class="screen" id="screen-3">
     <button class="back-btn" onclick="goTo(2)">
@@ -1550,6 +1598,65 @@
       Mein Tagebuch
     </button>
     <button class="btn-primary" onclick="startOver()">Neuen Tag starten</button>
+  </div>
+
+  <!-- ===== SCREEN 6: SETTINGS ===== -->
+  <div class="screen" id="screen-settings">
+    <button class="back-btn" onclick="goBack()">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Zurück
+    </button>
+
+    <h2 style="font-size:clamp(22px,6vw,28px);font-weight:800;letter-spacing:-0.02em;color:var(--text);margin-bottom:32px">Einstellungen</h2>
+
+    <!-- Sprache -->
+    <div style="background:var(--surface);border:1.5px solid var(--border);border-radius:20px;padding:20px 22px;margin-bottom:16px">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div>
+          <div style="font-size:15px;font-weight:600;color:var(--text);margin-bottom:4px">Affirmationssprache</div>
+          <div style="font-size:13px;color:var(--text3)">Sprache der generierten Affirmationen</div>
+        </div>
+        <div style="display:flex;gap:8px">
+          <button class="lang-btn" data-lang="en" onclick="selectLang(this)"
+            style="padding:8px 16px;border-radius:10px;border:1.5px solid var(--border);background:var(--surface);color:var(--text2);font-size:13px;font-weight:600;cursor:pointer;transition:all 0.2s;font-family:inherit">EN</button>
+          <button class="lang-btn" data-lang="de" onclick="selectLang(this)"
+            style="padding:8px 16px;border-radius:10px;border:1.5px solid var(--border);background:var(--surface);color:var(--text2);font-size:13px;font-weight:600;cursor:pointer;transition:all 0.2s;font-family:inherit">DE</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Profil zurücksetzen -->
+    <div style="background:var(--surface);border:1.5px solid var(--border);border-radius:20px;padding:20px 22px;margin-bottom:16px">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div>
+          <div style="font-size:15px;font-weight:600;color:var(--text);margin-bottom:4px">Profil</div>
+          <div style="font-size:13px;color:var(--text3)" id="settings-profile-info">Kein Profil gespeichert</div>
+        </div>
+        <button onclick="resetProfile()"
+          style="padding:8px 16px;border-radius:10px;border:1.5px solid var(--border);background:var(--surface);color:var(--text2);font-size:13px;font-weight:600;cursor:pointer;font-family:inherit">Zurücksetzen</button>
+      </div>
+    </div>
+
+    <!-- Theme -->
+    <div style="background:var(--surface);border:1.5px solid var(--border);border-radius:20px;padding:20px 22px">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div>
+          <div style="font-size:15px;font-weight:600;color:var(--text);margin-bottom:4px">Design</div>
+          <div style="font-size:13px;color:var(--text3)">Hell oder Dunkel</div>
+        </div>
+        <div style="display:flex;gap:8px">
+          <button onclick="setTheme('light')" id="theme-btn-light"
+            style="padding:8px 16px;border-radius:10px;border:1.5px solid var(--border);background:var(--surface);color:var(--text2);font-size:13px;font-weight:600;cursor:pointer;transition:all 0.2s;font-family:inherit">☀️</button>
+          <button onclick="setTheme('dark')" id="theme-btn-dark"
+            style="padding:8px 16px;border-radius:10px;border:1.5px solid var(--border);background:var(--surface);color:var(--text2);font-size:13px;font-weight:600;cursor:pointer;transition:all 0.2s;font-family:inherit">🌙</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="spacer"></div>
+    <div style="text-align:center;font-size:12px;color:var(--text3)">Stille Momente · v1.0</div>
   </div>
 
   <!-- ===== SCREEN 5: CALENDAR ===== -->
@@ -1655,6 +1762,182 @@
     const closeEl = document.getElementById('close-sub-text');
     if (closeEl && name) closeEl.textContent = `Du hast heute einen Moment für dich genommen, ${name}. Das ist mehr als genug.`;
     // affirmation text that uses name (screen-1 content gets set dynamically anyway)
+  }
+
+  // ─── LANGUAGE / SETTINGS ─────────────────────────────────────────────
+  function getLanguage() {
+    try { return localStorage.getItem('stilmo_lang') || 'en'; } catch { return 'en'; }
+  }
+  function setLanguage(lang) {
+    try { localStorage.setItem('stilmo_lang', lang); } catch {}
+  }
+  function selectLang(btn) {
+    document.querySelectorAll('.lang-btn').forEach(b => {
+      b.style.borderColor = 'var(--border)';
+      b.style.background = 'var(--surface)';
+      b.style.color = 'var(--text2)';
+    });
+    btn.style.borderColor = 'var(--rose)';
+    btn.style.background = 'var(--rose-pale)';
+    btn.style.color = 'var(--rose)';
+    setLanguage(btn.dataset.lang);
+  }
+  function openSettings() {
+    // Profil anzeigen
+    const p = getProfile();
+    const info = document.getElementById('settings-profile-info');
+    if (info && p?.name) info.textContent = `${p.name}, ${p.gender || ''}${p.age ? ', ' + p.age + ' Jahre' : ''}`;
+    // Aktive Sprache markieren
+    const lang = getLanguage();
+    document.querySelectorAll('.lang-btn').forEach(b => {
+      const active = b.dataset.lang === lang;
+      b.style.borderColor = active ? 'var(--rose)' : 'var(--border)';
+      b.style.background = active ? 'var(--rose-pale)' : 'var(--surface)';
+      b.style.color = active ? 'var(--rose)' : 'var(--text2)';
+    });
+    // Aktives Theme markieren
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    const lightBtn = document.getElementById('theme-btn-light');
+    const darkBtn = document.getElementById('theme-btn-dark');
+    if (lightBtn) { lightBtn.style.borderColor = !isDark ? 'var(--rose)' : 'var(--border)'; lightBtn.style.background = !isDark ? 'var(--rose-pale)' : 'var(--surface)'; }
+    if (darkBtn) { darkBtn.style.borderColor = isDark ? 'var(--rose)' : 'var(--border)'; darkBtn.style.background = isDark ? 'var(--rose-pale)' : 'var(--surface)'; }
+    // Zurück-Ziel merken
+    window._settingsPrev = document.querySelector('.screen.active')?.id || 'screen-0';
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById('screen-settings').classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  function setTheme(mode) {
+    document.documentElement.setAttribute('data-theme', mode);
+    try { localStorage.setItem('stilmo_theme', mode); } catch {}
+    // Buttons aktualisieren
+    const isDark = mode === 'dark';
+    const lightBtn = document.getElementById('theme-btn-light');
+    const darkBtn = document.getElementById('theme-btn-dark');
+    if (lightBtn) { lightBtn.style.borderColor = !isDark ? 'var(--rose)' : 'var(--border)'; lightBtn.style.background = !isDark ? 'var(--rose-pale)' : 'var(--surface)'; }
+    if (darkBtn) { darkBtn.style.borderColor = isDark ? 'var(--rose)' : 'var(--border)'; darkBtn.style.background = isDark ? 'var(--rose-pale)' : 'var(--surface)'; }
+  }
+  function goBack() {
+    const prev = window._settingsPrev || 'screen-0';
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById(prev).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  function resetProfile() {
+    if (!confirm('Profil wirklich zurücksetzen? Du wirst beim nächsten Start erneut nach deinem Namen gefragt.')) return;
+    try { localStorage.removeItem('stilmo_profile'); } catch {}
+    const info = document.getElementById('settings-profile-info');
+    if (info) info.textContent = 'Kein Profil gespeichert';
+  }
+
+  // ─── AFFIRMATIONS SCREEN ──────────────────────────────────────────────
+  let _generatedAffirmations = [];
+
+  async function goToAffirmations() {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById('screen-affirmations').classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Eingabefeld verstecken, bis Affirmationen da sind
+    document.getElementById('own-affirmation-block').style.display = 'none';
+    // LadeAnimation zeigen
+    const cards = document.getElementById('affirmation-cards');
+    cards.innerHTML = `<div class="affirmation-loading" style="text-align:center;padding:32px;color:var(--text3);font-size:14px">
+      <div style="width:28px;height:28px;border:2px solid var(--rose-pale);border-top-color:var(--rose);border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 12px"></div>
+      Ich schreibe etwas für dich…
+    </div>`;
+    // Gesprächsinhalt zusammenfassen
+    const chatBubbles = Array.from(document.querySelectorAll('.user-bubble')).map(el => el.textContent.trim()).join(' | ');
+    const apiKey = getApiKey();
+    if (!apiKey || !chatBubbles) {
+      showFallbackAffirmations();
+      return;
+    }
+    try {
+      const lang = getLanguage();
+      const langInstruction = lang === 'de'
+        ? 'Schreibe die Affirmationen auf Deutsch. Format: "Ich bin..." oder "Ich vertraue..."'
+        : 'Write the affirmations in English. Format: "I am..." or "I trust..."';
+      const prompt = `Basierend auf diesem kurzen Journaleintrag einer Person, erstelle genau 3 kurze, persönliche Affirmationen.
+
+Journaleintrag: "${chatBubbles}"
+
+${langInstruction}
+
+Regeln:
+- Jede Affirmation max. 8 Worte
+- Positiv, in der Gegenwart, ich-Form
+- Direkt auf das Thema der Person eingehen
+- Keine Floskeln wie "I am worthy" oder generische Aussagen
+- Antworte NUR mit den 3 Affirmationen, eine pro Zeile, ohne Nummerierung, ohne Anführungszeichen`;
+
+      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent?key=${apiKey}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ contents: [{ role: 'user', parts: [{ text: prompt }] }] })
+      });
+      if (!res.ok) throw new Error('API error');
+      const data = await res.json();
+      const text = data.candidates?.[0]?.content?.parts?.[0]?.text || '';
+      const lines = text.split('\n').map(l => l.trim()).filter(l => l.length > 3).slice(0, 3);
+      if (lines.length < 1) throw new Error('No affirmations');
+      _generatedAffirmations = lines;
+      renderAffirmationCards(lines);
+    } catch {
+      showFallbackAffirmations();
+    }
+  }
+
+  function showFallbackAffirmations() {
+    const lang = getLanguage();
+    const fallbacks = lang === 'de'
+      ? ['Ich vertraue meinem eigenen Weg.', 'Ich bin stark genug für diesen Moment.', 'Ich glaube an meine Fähigkeiten.']
+      : ['I trust my own path.', 'I am strong enough for this moment.', 'I believe in my abilities.'];
+    _generatedAffirmations = fallbacks;
+    renderAffirmationCards(fallbacks);
+  }
+
+  function renderAffirmationCards(lines) {
+    const cards = document.getElementById('affirmation-cards');
+    cards.innerHTML = lines.map((line, i) => `
+      <div class="affirmation-gen-card" style="background:var(--surface);border:1.5px solid var(--border);border-radius:18px;padding:20px 22px;display:flex;align-items:center;gap:16px;animation:fadeUp 0.4s ease both;animation-delay:${i * 0.12}s">
+        <div style="width:32px;height:32px;border-radius:50%;background:var(--rose-pale);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="var(--rose)" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <div style="font-size:16px;font-weight:600;color:var(--text);line-height:1.4;font-style:italic">${line}</div>
+      </div>`).join('');
+    // Eigenes Feld einblenden
+    setTimeout(() => {
+      document.getElementById('own-affirmation-block').style.display = 'block';
+    }, lines.length * 120 + 200);
+  }
+
+  function checkOwnAffirmation() {
+    const val = document.getElementById('own-affirmation-input').value.trim();
+    const btn = document.getElementById('own-affirmation-add');
+    btn.disabled = val.length < 2;
+    btn.style.opacity = val.length < 2 ? '0.4' : '1';
+  }
+
+  function addOwnAffirmation() {
+    const input = document.getElementById('own-affirmation-input');
+    const val = input.value.trim();
+    if (!val) return;
+    const lang = getLanguage();
+    const fullText = lang === 'de' ? `Ich bin ${val}` : `I am ${val}`;
+    const cards = document.getElementById('affirmation-cards');
+    const newCard = document.createElement('div');
+    newCard.className = 'affirmation-gen-card';
+    newCard.style.cssText = 'background:var(--rose-pale);border:1.5px solid var(--rose-soft);border-radius:18px;padding:20px 22px;display:flex;align-items:center;gap:16px;animation:fadeUp 0.3s ease both';
+    newCard.innerHTML = `
+      <div style="width:32px;height:32px;border-radius:50%;background:var(--rose);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#fff" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+      </div>
+      <div style="font-size:16px;font-weight:600;color:var(--rose);line-height:1.4;font-style:italic">${fullText}</div>`;
+    cards.appendChild(newCard);
+    input.value = '';
+    checkOwnAffirmation();
+    input.blur();
+    newCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
 
   // ─── CONTENT POOLS ──────────────────────────────────────────────────
@@ -2146,7 +2429,7 @@ Hilf dabei herauszufinden was gerade da ist — ohne Schublade.`
       <div class="ai-bubble transition-card" style="padding:18px 20px">
         <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:4px">
           <button class="transition-btn" onclick="showContinueInput()">Noch etwas schreiben</button>
-          <button class="transition-btn transition-btn-primary" onclick="goTo(3)">Weiter →</button>
+          <button class="transition-btn transition-btn-primary" onclick="goToAffirmations()">Weiter →</button>
         </div>
       </div>`;
     history.appendChild(card);
